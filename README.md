@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Fitness & Workout Tracker PWA
 
 A modern, responsive Progressive Web App (PWA) for tracking workouts and fitness progress. Built with vanilla HTML, CSS, and JavaScript.
@@ -249,3 +250,7 @@ For issues or questions, please open an issue on GitHub.
 
 Made with 💪 for fitness enthusiasts
 
+=======
+# Fitness-Tracker
+A Fitness Tracker web app
+>>>>>>> d3d2cbc51c2fea899c59782e47fd711a238789fe
