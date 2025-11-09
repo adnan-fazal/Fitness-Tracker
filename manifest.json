@@ -1,0 +1,66 @@
+{
+  "name": "Fitness Tracker",
+  "short_name": "Fitness",
+  "description": "Track your daily workouts and fitness progress",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "fitness", "lifestyle"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Today's Workout",
+      "short_name": "Today",
+      "description": "View today's workout plan",
+      "url": "/index.html",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Workout Plans",
+      "short_name": "Plans",
+      "description": "View weekly workout plans",
+      "url": "/plans.html",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Progress",
+      "short_name": "Progress",
+      "description": "View your fitness progress",
+      "url": "/progress.html",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
+

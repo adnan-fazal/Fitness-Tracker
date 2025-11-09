@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Generator - Fitness Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        .icon-container {
+            margin: 2rem;
+            text-align: center;
+        }
+        canvas {
+            border: 2px solid #333;
+            margin: 1rem;
+            background: white;
+        }
+        button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+        }
+        button:hover {
+            background: #4f46e5;
+        }
+        .instructions {
+            max-width: 600px;
+            margin: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Fitness Tracker - Icon Generator</h1>
+    
+    <div class="instructions">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Click "Generate Icons" to create the icon designs</li>
+            <li>Right-click on each canvas and "Save image as..."</li>
+            <li>Save as:
+                <ul>
+                    <li>icon-192.png (192x192)</li>
+                    <li>icon-512.png (512x512)</li>
+                </ul>
+            </li>
+            <li>Alternatively, use an online tool to convert the canvas to PNG</li>
+        </ol>
+    </div>
+
+    <div class="icon-container">
+        <h2>192x192 Icon</h2>
+        <canvas id="icon192" width="192" height="192"></canvas>
+        <button onclick="downloadIcon('icon192', 'icon-192.png')">Download 192x192</button>
+    </div>
+
+    <div class="icon-container">
+        <h2>512x512 Icon</h2>
+        <canvas id="icon512" width="512" height="512"></canvas>
+        <button onclick="downloadIcon('icon512', 'icon-512.png')">Download 512x512</button>
+    </div>
+
+    <button onclick="generateIcons()" style="background: #10b981; font-size: 1.2rem; padding: 1.5rem 3rem;">Generate Icons</button>
+
+    <script>
+        function generateIcons() {
+            generateIcon('icon192', 192);
+            generateIcon('icon512', 512);
+        }
+
+        function generateIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#6366f1');
+            gradient.addColorStop(1, '#8b5cf6');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Draw dumbbell icon
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const barWidth = size * 0.4;
+            const barHeight = size * 0.1;
+            const weightSize = size * 0.15;
+            
+            // Draw weights (left)
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(centerX - barWidth / 2, centerY, weightSize / 2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw weights (right)
+            ctx.beginPath();
+            ctx.arc(centerX + barWidth / 2, centerY, weightSize / 2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw bar
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(centerX - barWidth / 2, centerY - barHeight / 2, barWidth, barHeight);
+            
+            // Add shine effect
+            const shineGradient = ctx.createLinearGradient(0, 0, size, size);
+            shineGradient.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+            shineGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            ctx.fillStyle = shineGradient;
+            ctx.fillRect(0, 0, size, size);
+        }
+
+        function downloadIcon(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Generate icons on load
+        window.addEventListener('load', generateIcons);
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6366f1">
+    
+    <title>Offline - Fitness Tracker</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .offline-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        .offline-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        .offline-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .offline-message {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+        .offline-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📡</div>
+        <h1 class="offline-title">You're Offline</h1>
+        <p class="offline-message">
+            It looks like you're not connected to the internet. Don't worry! 
+            You can still view your workouts and track your progress. 
+            Some features may be limited until you're back online.
+        </p>
+        <div class="offline-actions">
+            <a href="index.html" class="btn btn-primary">Go to Dashboard</a>
+            <button class="btn btn-secondary" onclick="window.location.reload()">Retry</button>
+        </div>
+    </div>
+
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

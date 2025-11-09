@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fitness & Workout Tracker - Track your daily workouts and progress">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Fitness Tracker">
+    
+    <title>Fitness Tracker - Dashboard</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="nav-icon">💪</span>
+                <span class="nav-title">Fitness Tracker</span>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Dashboard</a></li>
+                <li><a href="plans.html" class="nav-link">Workout Plans</a></li>
+                <li><a href="custom.html" class="nav-link">Custom Workouts</a></li>
+                <li><a href="progress.html" class="nav-link">Progress</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Motivational Quote Section -->
+        <section class="quote-section">
+            <div class="quote-card">
+                <p class="quote-text" id="motivationalQuote">"The only bad workout is the one that didn't happen."</p>
+            </div>
+        </section>
+
+        <!-- Dashboard Header -->
+        <section class="dashboard-header">
+            <h1 class="page-title">Today's Workout</h1>
+            <p class="page-subtitle" id="currentDate"></p>
+        </section>
+
+        <!-- Today's Workout Plan -->
+        <section class="workout-section">
+            <h2 class="section-title">Today's Plan</h2>
+            <div class="workout-card" id="todayWorkout">
+                <div class="workout-loading">Loading today's workout...</div>
+            </div>
+        </section>
+
+        <!-- Progress Overview -->
+        <section class="progress-section">
+            <h2 class="section-title">Today's Progress</h2>
+            <div class="progress-grid">
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <h3>Workouts Completed</h3>
+                        <span class="progress-value" id="todayCompleted">0</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="todayCompletedBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <h3>Calories Burned</h3>
+                        <span class="progress-value" id="todayCalories">0</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill calories" id="todayCaloriesBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <h3>Weekly Goal</h3>
+                        <span class="progress-value" id="weeklyProgress">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill weekly" id="weeklyProgressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="stats-section">
+            <h2 class="section-title">Quick Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-info">
+                        <h3>Total Workouts</h3>
+                        <p class="stat-value" id="totalWorkouts">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-info">
+                        <h3>This Week</h3>
+                        <p class="stat-value" id="weekWorkouts">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💪</div>
+                    <div class="stat-info">
+                        <h3>Streak</h3>
+                        <p class="stat-value" id="streak">0 days</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-info">
+                        <h3>Goal Progress</h3>
+                        <p class="stat-value" id="goalProgress">0%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suggested Workouts -->
+        <section class="suggested-section">
+            <h2 class="section-title">Suggested Workouts</h2>
+            <div class="suggested-workouts" id="suggestedWorkouts">
+                <!-- Suggested workouts will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Install Prompt -->
+    <div class="install-prompt" id="installPrompt" style="display: none;">
+        <div class="install-content">
+            <p>Install Fitness Tracker for a better experience!</p>
+            <button class="btn btn-primary" id="installBtn">Install</button>
+            <button class="btn btn-secondary" id="dismissInstall">Not Now</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/workouts.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDashboard();
+            loadSuggestedWorkouts();
+            
+            // Animate numbers on dashboard
+            setTimeout(() => {
+                const progressValue = document.getElementById('todayCompleted');
+                if (progressValue) {
+                    const text = progressValue.textContent;
+                    const match = text.match(/(\d+)/);
+                    if (match) {
+                        AnimationManager.animateNumber(progressValue, parseInt(match[1]), 1500);
+                    }
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
+
